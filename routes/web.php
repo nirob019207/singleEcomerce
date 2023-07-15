@@ -21,7 +21,9 @@ use App\Http\Controllers\ClientController;
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    $allproducts=App\Models\Product::latest()->get();
+    $categories=App\Models\Category::latest()->get();
+    return view('welcome',compact('allproducts','categories'));
 });
 
 
@@ -50,7 +52,7 @@ Route::get('/redirect',[HomeController::class,'redirect']);
 
 
 
-  Route::middleware('auth')->group(function () {
+  Route::middleware('auth','checkusertype')->group(function () {
     Route::controller(ClientController::class)->group(function(){
 
         Route::get('/checkout','Checkout')->name('checkout');
@@ -89,7 +91,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth','verified')->group(function () {
+Route::middleware('auth','verified','checkadmintype')->group(function () {
     // Route::controller(DashboardController::class)->group(function(){
     //     Route::get('admin/dashboard','Index')->name('admindashboard');
 

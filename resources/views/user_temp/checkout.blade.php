@@ -82,12 +82,10 @@
     <form action="{{ route('placeorder') }}"method="POST">
 
         @csrf
-        <input type="submit"class="btn btn-primary mr-3" value="plaace order ">
+        <input type="submit"class="btn btn-primary mr-3" value="cash On delicary ">
     </form>
-    <form action=""method="POST">
-
-        @csrf
-        <input type="submit"class="btn btn-warning" value="Cancel order">
+    
+        <input type="submit"class="btn btn-warning" value="Online payment">
     </form>
 </div>
 @endsection

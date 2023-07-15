@@ -55,15 +55,25 @@ $categories=App\Models\Category::latest()->get();
                                 <li><a href="">Gift Ideas</a></li>
                                 <li><a href="{{ route('newrelease') }}">New Releases</a></li>
                                 <li><a href="{{ route('todayidea') }}">Today's Deals</a></li>
-                                <li class="dropdown">
-                                    <button class="btn btn-info"><div><form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                    <a href="route('logout')"onclick="event.preventDefault();
-                                    this.closest('form').submit();">logout</a>
-                                </form></div></button>
+                                
+                                <li>
+                                    @if (Route::has('login'))
+                                    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                                        @auth
+                                        <button class="btn btn-info"><div><form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                        <a href="route('logout')"onclick="event.preventDefault();
+                                        this.closest('form').submit();">logout</a>
+                                    </form></div></button>
+                                        @else
+                                            <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
-
-
+                                            @if (Route::has('register'))
+                                                <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                                            @endif
+                                        @endauth
+                                    </div>
+                                @endif
                                 </li>
                             </ul>
                         </div>

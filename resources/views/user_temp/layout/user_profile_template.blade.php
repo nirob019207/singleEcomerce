@@ -9,7 +9,7 @@
             <div class="box_main">
                 <ul>
                     <li><a href="{{ route('userprofile') }}">Dashboard</a></li>
-                    <li><a href="">pending Orders</a></li>
+                    <li><a href="{{ route('pendingoders') }}">pending Orders</a></li>
                     <li><a href="{{ route('history') }}">History</a></li>
                     <li><a href="">Logout</a></li>
                 </ul>
@@ -17,7 +17,7 @@
 
         </div>
         <div class="col-lg-8">
-            @yield('profilecontent');
+            @yield('profilecontent')
 
         </div>
     </div>

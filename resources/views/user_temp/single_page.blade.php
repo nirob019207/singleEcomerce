@@ -33,8 +33,9 @@
                         <input type="hidden" value="{{ $products->id }}" name="product_id">
                         <div class="form-group">
                             <input type="hidden" value="{{ $products->price }}" name="price">
+
                             <label for="quantity">How many pieces?</label>
-                            <input type="number" min="1" placeholder="1" name="quantity" class="form-control"><br>
+                            <input type="number" min="1" placeholder="" required name="quantity" class="form-control"><br>
                         </div>
                         <input class="btn btn-warning" type="submit" value="Add To Cart">
                     </form>
@@ -64,7 +65,7 @@
                                     <input type="hidden" value="{{ $products->price }}" name="price">
                                     <input type="hidden" value="1" name="quantity">
                                     <input class="btn btn-warning" type="submit" value="Buy Now">
-                                    <input class="btn btn-warning" type="submit" value="Buy Now">
+                               
                                 </form>
                                 <div class="seemore_bt">
                                  <button class="btn btn-info">   <a href="{{ route('singleproduct', [$product->id, $product->slug]) }}">See More</a></button>

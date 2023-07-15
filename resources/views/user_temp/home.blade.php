@@ -39,7 +39,7 @@
     </div>
 </div>
 
- <!-- fashion section end -->
+ {{-- <!-- fashion section end -->
  <!-- electronic section start -->
  <div class="fashion_section">
     <div id="electronic_main_slider" class="carousel slide" data-ride="carousel">
@@ -180,7 +180,7 @@
     </div>
  </div>
  <!-- electronic section end -->
- <!-- jewellery  section start -->
+ >
  <div class="jewellery_section">
     <div id="jewellery_main_slider" class="carousel slide" data-ride="carousel">
        <div class="carousel-inner">
@@ -323,7 +323,7 @@
     </div>
  </div>
 
-
+ --}}
 
 @endsection
 

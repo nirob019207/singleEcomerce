@@ -113,7 +113,10 @@ public function AddShipping(Request $request){
 
 
     }
-    return redirect()->route('pendingoders')->with('message','your order placed successfully');
+    $shipping_address=Shipping::where('user_id',$user_id)->first()->delete();
+
+
+    return redirect()->route('pendingoders')->with('message','your order has been placed successfully');
 
    }
    public function NewRelease(){
@@ -126,7 +129,8 @@ public function AddShipping(Request $request){
     return view('user_temp.caustomar');
    }
    public function PendingOrders(){
-    return view('user_temp.pending_orders');
+    $pending_orders=Order::where('status','pending')->latest()->get();
+    return view('user_temp.pending_orders',compact('pending_orders'));
    }
    public function History(){
     return view('user_temp.history');
