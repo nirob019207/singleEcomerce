@@ -47,22 +47,31 @@ $categories=App\Models\Category::latest()->get();
          <!-- header top section start -->
          <div class="container">
             <div class="header_section_top">
-               <div class="row">
-                  <div class="col-sm-12">
-                     <div class="custom_menu">
-                        <ul>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="custom_menu">
+                            <ul>
+                                <li><a href="#">Best Sellers</a></li>
+                                <li><a href="">Gift Ideas</a></li>
+                                <li><a href="{{ route('newrelease') }}">New Releases</a></li>
+                                <li><a href="{{ route('todayidea') }}">Today's Deals</a></li>
+                                <li class="dropdown">
+                                    <button class="btn btn-info"><div><form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                    <a href="route('logout')"onclick="event.preventDefault();
+                                    this.closest('form').submit();">logout</a>
+                                </form></div></button>
 
-                           <li><a href="#">Best Sellers</a></li>
-                           <li><a href="">Gift Ideas</a></li>
-                           <li><a href="{{ route('newrelease') }}">New Releases</a></li>
-                           <li><a href="{{ route('todayidea') }}">Today's Deals</a></li>
-                           <li><a href="{{ route('customar') }}">Customer Service</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
+
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
+        </div>
+
          <!-- header top section start -->
          <!-- logo section start -->
          <div class="logo_section">
@@ -81,7 +90,7 @@ $categories=App\Models\Category::latest()->get();
                <div class="containt_main">
                   <div id="mySidenav" class="sidenav">
                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                     <a href="index.html">Home</a>
+                     <a href="/redirect">Home</a>
 
                      @foreach ($categories as $category)
                      <a href="{{ route('category',[$category->id,$category->slug]) }}"> {{ $category->category_name }}</a>

@@ -20,34 +20,57 @@ use App\Http\Controllers\ClientController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::controller(HomeController::class)->group(function(){
-    Route::get('/','Index')->name('Home');
 
-  });
+Route::get('/redirect',[HomeController::class,'redirect']);
+
+// Route::controller(HomeController::class)->group(function(){
+//     Route::get('/','Index')->name('home');
+
+//   });
+
+
   Route::controller(ClientController::class)->group(function(){
 
+    Route::get('/category/user/{id}/{slug}','CategoryPage')->name('category');
+    Route::get('/product-detailw/{id}/{slug}','SinglePage')->name('singleproduct');
+    Route::get('/new_relese','NewRelease')->name('newrelease');
 
-    Route::get('/checkout','Checkout')->name('checkout');
-    Route::get('/add-to-cart','Add_To_Cart')->name('addtocart');
-    Route::get('/user-profile','UserProfile')->name('userprofile');
-   
-    Route::get('/today_deal','TodayIdea')->name('todayidea');
-    Route::get('/customar','Customar')->name('customar');
+});
 
 
-  });
 
-  Route::middleware('auth','role:user')->group(function () {
+
+
+
+
+
+
+
+  Route::middleware('auth')->group(function () {
     Route::controller(ClientController::class)->group(function(){
-        Route::get('/category/user/{id}/{slug}','CategoryPage')->name('category');
-        Route::get('/product-detailw/{id}/{slug}','SinglePage')->name('singleproduct');
+
         Route::get('/checkout','Checkout')->name('checkout');
+        Route::get('/shiping_addres','Shipping')->name('shipping');
         Route::get('/add-to-cart','Add_To_Cart')->name('addtocart');
+        Route::post('/add-to-cart-product','Add_To_Cart_Product')->name('addtocartproduct');
         Route::get('/user-profile','UserProfile')->name('userprofile');
-        Route::get('/new_relese','NewRelease')->name('newrelease');
+
         Route::get('/today_deal','TodayIdea')->name('todayidea');
         Route::get('/customar','Customar')->name('customar');
+        Route::post('/add-shipping','AddShipping')->name('addshipping');
+        Route::post('/place_order','PlaceOrder')->name('placeorder');
+
+
+
+        Route::get('/user_profile/peding-orders','PendingOrders')->name('pendingoders');
+        Route::get('/user_profile/history','History')->name('history');
+
+        Route::get('remove/item/{id}','RemoveCart')->name('removeitem');
+
 
 
       });
@@ -56,7 +79,7 @@ Route::controller(HomeController::class)->group(function(){
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified','role:user'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
@@ -66,11 +89,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth','verified','role:admin')->group(function () {
-    Route::controller(DashboardController::class)->group(function(){
-        Route::get('admin/dashboard','Index')->name('admindashboard');
+Route::middleware('auth','verified')->group(function () {
+    // Route::controller(DashboardController::class)->group(function(){
+    //     Route::get('admin/dashboard','Index')->name('admindashboard');
 
-    });
+    // });
     Route::controller(CategoryController::class)->group(function(){
         Route::get('admin/all-category','Index')->name('allcategory');
         Route::get('admin/add-category','AddCategory')->name('addcategory');

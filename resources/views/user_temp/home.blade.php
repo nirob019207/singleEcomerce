@@ -19,8 +19,16 @@
                                 <img src="{{ asset($product->product_img) }}">
                             </div>
                             <div class="btn_main">
-                                <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <div class="seemore_bt"><a href="{{ route('singleproduct', [$product->id, $product->slug]) }}">See More</a></div>
+                                <form action="{{ route('addtocartproduct') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="{{ $product->id }}" name="product_id">
+                                    <input type="hidden" value="{{ $product->price }}" name="price">
+                                    <input type="hidden" value="1" name="quantity">
+                                    <input class="btn btn-warning" type="submit" value="Buy Now">
+                                </form>
+                                <div class="seemore_bt">
+                                 <button class="btn btn-info">   <a href="{{ route('singleproduct', [$product->id, $product->slug]) }}">See More</a></button>
+                                </div>
                             </div>
                         </div>
                     </div>
