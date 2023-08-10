@@ -207,6 +207,20 @@ button {
 .padding_0 {
     padding: 0px;
 }
+.logoo {
+    background-color: #f26522;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+ }
+
+ .logo-textt {
+    margin: 0;
+ }
+
+
 
 
 /* banner bg main start */
@@ -214,10 +228,11 @@ button {
 .banner_bg_main {
     width: 100%;
     float: left;
-    background-image: url(../images/banner-bg.png);
+    background-image: url(../images/background.jpg);
     height: auto;
     background-size: 100%;
     background-repeat: no-repeat;
+    margin: 5px 20px 5px 5px;
 }
 
 

@@ -52,6 +52,8 @@ Route::get('/redirect',[HomeController::class,'redirect']);
 
 
 
+
+
   Route::middleware('auth','checkusertype')->group(function () {
     Route::controller(ClientController::class)->group(function(){
 

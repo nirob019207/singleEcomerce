@@ -45,7 +45,7 @@ $categories=App\Models\Category::latest()->get();
       <!-- banner bg main start -->
       <div class="banner_bg_main">
          <!-- header top section start -->
-         <div class="container">
+         <div class="container ">
             <div class="header_section_top">
                 <div class="row">
                     <div class="col-sm-12">
@@ -55,7 +55,7 @@ $categories=App\Models\Category::latest()->get();
                                 <li><a href="">Gift Ideas</a></li>
                                 <li><a href="{{ route('newrelease') }}">New Releases</a></li>
                                 <li><a href="{{ route('todayidea') }}">Today's Deals</a></li>
-                                
+
                                 <li>
                                     @if (Route::has('login'))
                                     <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
@@ -88,7 +88,8 @@ $categories=App\Models\Category::latest()->get();
             <div class="container">
                <div class="row">
                   <div class="col-sm-12">
-                     <div class="logo"><a href="index.html"><img style=""src="{{ asset('home/images/logo.png') }}"></a></div>
+                     <div class="logo"><div class="logoo">
+                        <p class="logo-textt">CBST Ecommerce</p></div></div>
                   </div>
                </div>
             </div>
@@ -127,15 +128,18 @@ $categories=App\Models\Category::latest()->get();
                   <div class="main">
                      <!-- Another variation with a button -->
                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search this blog">
+                        <input type="text" class="form-control" placeholder="Search this blog" id="search-input">
+
+
                         <div class="input-group-append">
-                           <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
-                           <i class="fa fa-search"></i>
-                           </button>
+                            <button id="search-button" class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
+                                <i class="fa fa-search"></i>
+                             </button>
+
                         </div>
                      </div>
                   </div>
-                  <div class="header_box">
+                  <div class="header_box"style="margin-bottom:50px">
                      <div class="lang_box ">
                         <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
                         <img src="{{ asset('home/images/flag-uk.png') }}" alt="flag" class="mr-2 " title="United Kingdom"> English <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
@@ -181,7 +185,7 @@ $categories=App\Models\Category::latest()->get();
 
         <div class="container py-4"style="margin-top:700px" >
 
-
+            <div id="search-results"></div>
 
 
             @yield('main-content')
@@ -219,6 +223,8 @@ $categories=App\Models\Category::latest()->get();
       </div>
       <!-- copyright section end -->
       <!-- Javascript files-->
+
+
       <script src="{{ asset('home/js/jquery.min.js') }}"></script>
       <script src="{{ asset('home/js/popper.min.js') }}"></script>
       <script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>
@@ -236,5 +242,6 @@ $categories=App\Models\Category::latest()->get();
            document.getElementById("mySidenav").style.width = "0";
          }
       </script>
+
    </body>
 </html>
